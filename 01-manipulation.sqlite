@@ -1,0 +1,49 @@
+-- Create a Table
+-- In this project, you will create your own friends table and add/delete data from it!
+
+-- Creating a table
+CREATE TABLE friends (
+  id INTEGER,
+  name TEXT,
+  birthday DATE
+);
+
+-- Adding a record
+INSERT INTO friends (id, name, birthday)
+VALUES (1, 'Ororo Munroe', '1940-05-30');
+
+-- Adding two more records
+INSERT INTO friends (id, name, birthday)
+VALUES
+  (2, 'John', '1990-01-01'),
+  (3, 'James', '1991-02-02');
+
+-- Modifying a record
+UPDATE friends
+SET name = 'Storm'
+WHERE id = 1;
+
+-- Adding a new column
+ALTER TABLE friends
+ADD COLUMN email TEXT;
+
+-- Update the records according to the new column
+UPDATE friends
+SET email = 'storm@codecademy.com'
+WHERE id = 1;
+
+UPDATE friends
+SET email = 'john@codecademy.com'
+WHERE id = 2;
+
+UPDATE friends
+SET email = 'james@codecademy.com'
+WHERE id = 3;
+
+-- Deleting a record
+DELETE FROM friends
+WHERE id = 1;
+
+-- Querying all data
+SELECT *
+FROM friends;
