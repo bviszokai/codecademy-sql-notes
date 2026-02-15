@@ -1,5 +1,7 @@
+-- =========================================================
 -- Create a Table
--- In this project, you will create your own friends table and add/delete data from it!
+-- Create and manage a simple 'friends' table
+-- =========================================================
 
 -- Creating a table
 CREATE TABLE friends (
