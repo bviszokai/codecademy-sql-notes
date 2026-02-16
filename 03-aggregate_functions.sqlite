@@ -1,0 +1,74 @@
+-- =========================================================
+-- Learn SQL — Trends in Startups
+-- Aggregate queries on the 'startups' table
+-- =========================================================
+
+-- Inspect the dataset
+SELECT *
+FROM startups;
+
+-- Total number of startups in the table
+SELECT COUNT(*) AS startup_count
+FROM startups;
+
+-- Total valuation across all startups
+SELECT SUM(valuation) AS total_valuation
+FROM startups;
+
+-- Largest amount raised among Seed-stage startups
+SELECT MAX(raised) AS max_raised_seed
+FROM startups
+WHERE stage = 'Seed';
+
+-- Oldest founding year (earliest founded)
+SELECT MIN(founded) AS earliest_founded
+FROM startups;
+
+-- Average valuation across all startups
+SELECT AVG(valuation) AS avg_valuation
+FROM startups;
+
+-- Average valuation by category
+SELECT
+  category,
+  AVG(valuation) AS avg_valuation
+FROM startups
+GROUP BY category;
+
+-- Average valuation by category (rounded to 2 decimals)
+SELECT
+  category,
+  ROUND(AVG(valuation), 2) AS avg_valuation
+FROM startups
+GROUP BY category;
+
+-- Categories ranked by average valuation (highest first)
+SELECT
+  category,
+  ROUND(AVG(valuation), 2) AS avg_valuation
+FROM startups
+GROUP BY category
+ORDER BY avg_valuation DESC;
+
+-- Categories with more than 3 startups
+SELECT
+  category,
+  COUNT(*) AS startup_count
+FROM startups
+GROUP BY category
+HAVING COUNT(*) > 3;
+
+-- Average number of employees by location
+SELECT
+  location,
+  AVG(employees) AS avg_employees
+FROM startups
+GROUP BY location;
+
+-- Locations where the average employee count is above 500
+SELECT
+  location,
+  AVG(employees) AS avg_employees
+FROM startups
+GROUP BY location
+HAVING AVG(employees) > 500;
